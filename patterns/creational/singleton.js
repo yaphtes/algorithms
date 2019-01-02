@@ -12,5 +12,6 @@ class Singleton {
   }
 }
 
+
 // client
 const instance = Singleton.getInstance({ url: 'http://example.com' });
