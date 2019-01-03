@@ -1,4 +1,4 @@
-// abstract factory module
+// pattern module
 class DrinkAbstractFactory {
   static createFactory(type) {
     if (!type) {
@@ -19,9 +19,7 @@ class DrinkAbstractFactory {
   };
 }
 
-
-// CoffeeFactory module
-class CoffeeFactory {
+class CoffeeFactory { // concrete factory module
   static create(type, params) {
     if (!type) {
       throw new Error('type should not be empty');
@@ -41,9 +39,7 @@ class CoffeeFactory {
   };
 }
 
-
-// concreteFacgtoryB module
-class TeaFactory {
+class TeaFactory { // concrete factory module
   static create(type, params) {
     if (!type) {
       throw new Error('type should not be empty');
@@ -65,7 +61,7 @@ class TeaFactory {
 }
 
 
-// client mocule
+// client module
 const CoffeeFactory = DrinkFactory.createFactory('CoffeeFactory');
 const americano = CoffeeFactory.create('Americano', { amound: 2, sugar: true });
 const espresso = CoffeeFactory.create('Espresso', { amound: 3, sugar: false });

@@ -1,4 +1,4 @@
-// module
+// pattern module
 class Singleton {
   async constructor(params) {
     if (!Singleton.instance) {
@@ -13,5 +13,5 @@ class Singleton {
 }
 
 
-// client
+// client module
 const instance = Singleton.getInstance({ url: 'http://example.com' });

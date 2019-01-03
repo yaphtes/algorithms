@@ -1,4 +1,4 @@
-// module
+// pattern module
 class CoffeeFactory {
   static create(type, params) {
     if (!type) throw new Error('type should not be empty');
@@ -18,6 +18,6 @@ class CoffeeFactory {
 }
 
 
-// client
+// client module
 const americano = CoffeeFactory.create('Americano', { amound: 2, sugar: false });
 const expresso = CoffeeFactory.create('Espresso', { amound: 3, sugar: true });
