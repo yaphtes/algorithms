@@ -1,12 +1,11 @@
 // pattern module
 class Singleton {
-  async constructor(params) {
+  constructor(params) {
     if (!Singleton.instance) {
       Singleton.instance = this;
     }
 
-    // initialization
-    this.url = params.url;
+    // can init here...
 
     return Singleton.instance;
   }
@@ -14,4 +13,7 @@ class Singleton {
 
 
 // client module
-const instance = Singleton.getInstance({ url: 'http://example.com' });
+const instance = new Singleton();
+const instance2 = new Singleton();
+
+instance == instance2 // => true
