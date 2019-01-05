@@ -1,3 +1,11 @@
+// Builder (строитель)
+// Избавляет клиент от привязки к конкретным класса.
+// Даёт более тонкий контроль над процессом создания объектов.
+// Удобно делать отложенный или условный билдинг.
+// Есть возможность использования дополнительного уровня абстракции Director (от слова перенаправлять), 
+// который даёт некие предустановленные сборки из билдера.
+
+
 // pattern module
 class Computer {
   constructor(builder) {
@@ -82,3 +90,5 @@ const director = new ComputerBuilderDirector(builder3);
 
 const expensiveComputer = director.createExpensiveComputer();
 const cheapComputer = director.createCheapComputer();
+const makBookPro = director.createMacBookPro();
+const asus5830 = director.createAsus5830();
