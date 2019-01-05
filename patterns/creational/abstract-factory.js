@@ -1,72 +1,71 @@
+// Abstract factory (абстрактная фабрика)
+// Выполняет все те же функции, что и обычная фабрика, но..
+// ..помимо эттого добавляет дополнительный уровень абсттракции, например,
+// 
+// обычная фабрика:
+// Factory -> Porshe, Ferrary
+// 
+// абстракттная фабрика:
+// AbstractFactory -> AircraftsFactory, CarsFactory
+//    AircraftsFactory -> Boeing, Airbus
+//    CarsFactory -> Porshe, Ferrary
+
+
 // pattern module
-class DrinkAbstractFactory {
+class TransportAbstractFactory {
   static createFactory(type) {
-    if (!type) {
-      throw Error('type should not be empty');
-    }
+    if (!type) throw Error('Type should not be empty');
 
     const Factory = AbstractFactory.factories[type];
-    if (typeof factory != 'function') {
-      throw new Error('can`t find factory');
-    }
+    if (typeof factory != 'function') throw new Error(`Innvalid type: ${type}`);
 
     return Factory;
   }
 
   static factories = {
-    CoffeeFactory,
-    TeaFactory,
+    CarsFactory,
+    AircraftsFactory,
   };
 }
 
-class CoffeeFactory { // concrete factory module
+class AircraftsFactory { // concrete factory module
   static create(type, params) {
-    if (!type) {
-      throw new Error('type should not be empty');
-    }
+    if (!type) throw new Error('Type should not be empty');
 
-    const Constructor = constructors[type];
-    if (typeof Constructor != 'function') {
-      throw new Error('can`t find constructor');
-    }
+    const Constructor = AircraftsFactory.constructors[type];
+    if (typeof Constructor != 'function') throw new Error(`Innvalid type: ${type}`);
 
     return new Constructor(params);
   }
   
   static constructors = {
-    Espresso,
-    Americano,
+    Boeing,
+    Airbus,
   };
 }
 
-class TeaFactory { // concrete factory module
+class CarsFactory { // concrete factory module
   static create(type, params) {
-    if (!type) {
-      throw new Error('type should not be empty');
-    }
+    if (!type) throw new Error('Type should not be empty');
 
-    const Constructor = TeaFactory.constructors[type];
-    if (typeof Constructor != 'function') {
-      throw new Error('can`t find constructor');
-    }
+    const Constructor = CarsFactory.constructors[type];
+    if (typeof Constructor != 'function') throw new Error(`Innvalid type: ${type}`);
 
     return new Constructor(params);
   }
 
   static constructors = {
-    Red,
-    Green,
-    Black,
+    Porshe,
+    Ferrary,
   };
 }
 
 
 // client module
-const CoffeeFactory = DrinkFactory.createFactory('CoffeeFactory');
-const americano = CoffeeFactory.create('Americano', { amound: 2, sugar: true });
-const espresso = CoffeeFactory.create('Espresso', { amound: 3, sugar: false });
+const AircraftsFactory = TransportAbstractFactory.createFactory('AircraftsFactory');
+const boeing = AircraftsFactory.create('Boeing', { foo: 'bar' });
+const airbus = AircraftsFactory.create('Airbus', { foo: 'bar' });
 
-const TeaFactory = DrinkFactory.createFactory('TeaFactory');
-const redTea = TeaFactory.create('Red', { sugar: true });
-const greenTea = TeaFactory.create('Green', { sugar: false });
-const blackTeam = TeaFactory.create('Black', { amound: 3, sugar: true });
+const CarsFactory = TransportAbstractFactory.createFactory('CarsFactory');
+const porshe = CarsFactory.create('Porshe', { foor: 'bar' });
+const ferrary = CarsFactory.create('Ferrary', { foo: 'bar' });
