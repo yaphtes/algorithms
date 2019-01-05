@@ -1,3 +1,9 @@
+// Prototype (прототип)
+// Патттерн создания объектта путем клонирования сущесттвующего вместо конструирования нового.
+// Класс должен имплементировать метод clone()
+// Часто реализуется поддержка глубокой копии объекта.
+
+
 // pattern module
 import deepClone from 'utils';
 
@@ -9,11 +15,12 @@ class Person {
     contacts = contacts;
   }
 
-  // must implement clone method (often supports deep copying)
   clone(deep = false) {
     if (!deep) {
-      return { ...this };
+      // shallow copy
+      return Object.assign({}, this);
     } else {
+      // deep copy
       return deepClone(this);
     }
   }
