@@ -1,4 +1,9 @@
-// service provider module
+// Adapter (адаптер)
+// Позволяет объектам с несовместимыми интерфейсами работать вместте.
+// Чаще всего имплементируется путем создания объекта-обертки над целевым интерфейсовм.
+
+
+// incompatible interface module
 class Http {
   request(method, url, data, done) {
     const xhr = new XMLHttpRequest();
@@ -15,7 +20,7 @@ class Http {
 }
 
 
-// service consumer module
+// consumer interface module
 class Repository {
   constructor(baseUrl, resource, httpClient) {
     this.baseUrl = baseUrl;
